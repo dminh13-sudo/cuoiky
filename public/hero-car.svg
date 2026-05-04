@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="0.55" stop-color="#0e1b33"/>
+      <stop offset="1" stop-color="#0a0f1a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="55%" cy="35%" r="60%">
+      <stop offset="0" stop-color="#60a5fa" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#60a5fa" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111827" stop-opacity="0"/>
+      <stop offset="1" stop-color="#111827" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+
+  <g opacity="0.35">
+    <path d="M0 820 C 420 760, 680 920, 980 860 C 1260 804, 1480 700, 1920 760 L1920 1080 L0 1080 Z" fill="url(#road)"/>
+    <path d="M180 900 L420 840" stroke="#93c5fd" stroke-opacity="0.25" stroke-width="6"/>
+    <path d="M520 920 L760 860" stroke="#93c5fd" stroke-opacity="0.18" stroke-width="6"/>
+    <path d="M900 930 L1140 870" stroke="#93c5fd" stroke-opacity="0.14" stroke-width="6"/>
+    <path d="M1280 920 L1520 860" stroke="#93c5fd" stroke-opacity="0.12" stroke-width="6"/>
+  </g>
+
+  <g transform="translate(250,520)" opacity="0.95">
+    <path d="M180 210 C 260 140, 390 110, 520 110 L740 110 C 830 110, 920 145, 985 205 L1060 275 C 1098 310, 1125 355, 1138 405 L1155 470 C 1162 495, 1148 520, 1122 525 L1060 535 C 1035 539, 1010 525, 1005 500 L990 440 L380 440 L350 505 C 342 525, 322 538, 300 535 L210 525 C 185 522, 170 498, 175 474 L190 400 C 206 335, 236 275, 278 230 Z"
+      fill="#111827" stroke="#93c5fd" stroke-opacity="0.35" stroke-width="3"/>
+    <path d="M405 180 C 460 145, 520 130, 585 130 L725 130 C 802 130, 870 150, 935 200 L995 245 L360 245 Z"
+      fill="#0b1220" stroke="#93c5fd" stroke-opacity="0.28" stroke-width="3"/>
+    <path d="M380 260 H1000" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="3"/>
+    <path d="M250 320 H1130" stroke="#60a5fa" stroke-opacity="0.15" stroke-width="3"/>
+
+    <g transform="translate(320,405)">
+      <circle cx="0" cy="0" r="82" fill="#0b1220" stroke="#93c5fd" stroke-opacity="0.35" stroke-width="4"/>
+      <circle cx="0" cy="0" r="42" fill="#111827" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="4"/>
+    </g>
+    <g transform="translate(940,405)">
+      <circle cx="0" cy="0" r="82" fill="#0b1220" stroke="#93c5fd" stroke-opacity="0.35" stroke-width="4"/>
+      <circle cx="0" cy="0" r="42" fill="#111827" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="4"/>
+    </g>
+  </g>
+</svg>
+

@@ -1,9 +1,9 @@
 "use client";
 
-import { Pagination, Typography } from "antd";
+import { Alert, Button, Pagination, Typography } from "antd";
 import { useEffect, useMemo, useState } from "react";
 
-import { fetchCars } from "./api";
+import { getCars } from "@/services/carService";
 import { CarFilters, type CarFiltersValue } from "./CarFilters";
 import { CarGrid } from "./CarGrid";
 import type { Car } from "./types";
@@ -12,8 +12,13 @@ const { Title, Text } = Typography;
 
 const PAGE_SIZE = 8;
 
-export default function CarListingPage() {
+type Props = {
+  initialFilters?: Partial<CarFiltersValue>;
+};
+
+export default function CarListingPage({ initialFilters }: Props) {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [cars, setCars] = useState<Car[]>([]);
   const [page, setPage] = useState(1);
 
@@ -26,12 +31,12 @@ export default function CarListingPage() {
     return { brands, categories, minPrice, maxPrice };
   }, [cars]);
 
-  const [filters, setFilters] = useState<CarFiltersValue>({
-    q: "",
-    brand: undefined,
-    categories: [],
-    priceRange: [0, 0],
-  });
+  const [filters, setFilters] = useState<CarFiltersValue>(() => ({
+    q: initialFilters?.q ?? "",
+    brand: initialFilters?.brand,
+    categories: initialFilters?.categories ?? [],
+    priceRange: initialFilters?.priceRange ?? [0, 0],
+  }));
 
   useEffect(() => {
     let cancelled = false;
@@ -39,9 +44,14 @@ export default function CarListingPage() {
     async function run() {
       try {
         setLoading(true);
-        const data = await fetchCars();
+        setError(null);
+        const data = await getCars();
         if (cancelled) return;
         setCars(data);
+      } catch (e) {
+        if (cancelled) return;
+        setCars([]);
+        setError(e instanceof Error ? e.message : "Không thể tải dữ liệu xe.");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -55,10 +65,18 @@ export default function CarListingPage() {
 
   useEffect(() => {
     // Initialize slider range once we know dataset min/max.
-    setFilters((prev) => ({
-      ...prev,
-      priceRange: [derived.minPrice, derived.maxPrice],
-    }));
+    setFilters((prev) => {
+      const hasIncomingRange =
+        Array.isArray(prev.priceRange) &&
+        Number.isFinite(prev.priceRange[0]) &&
+        Number.isFinite(prev.priceRange[1]) &&
+        (prev.priceRange[0] !== 0 || prev.priceRange[1] !== 0);
+
+      return {
+        ...prev,
+        priceRange: hasIncomingRange ? prev.priceRange : [derived.minPrice, derived.maxPrice],
+      };
+    });
   }, [derived.minPrice, derived.maxPrice]);
 
   const filtered = useMemo(() => {
@@ -101,6 +119,40 @@ export default function CarListingPage() {
             {loading ? "Đang tải dữ liệu..." : `Tìm thấy ${total} xe`}
           </Text>
         </div>
+
+        {error ? (
+          <div className="mb-4">
+            <Alert
+              type="error"
+              showIcon
+              message="Có lỗi khi tải dữ liệu"
+              description={error}
+              action={
+                <Button
+                  size="small"
+                  onClick={() => {
+                    setPage(1);
+                    setLoading(true);
+                    setError(null);
+                    void (async () => {
+                      try {
+                        const data = await getCars();
+                        setCars(data);
+                      } catch (e) {
+                        setCars([]);
+                        setError(e instanceof Error ? e.message : "Không thể tải dữ liệu xe.");
+                      } finally {
+                        setLoading(false);
+                      }
+                    })();
+                  }}
+                >
+                  Thử lại
+                </Button>
+              }
+            />
+          </div>
+        ) : null}
 
         <div className="flex flex-col gap-4 lg:flex-row">
           <CarFilters
