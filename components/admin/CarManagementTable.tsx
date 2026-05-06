@@ -265,15 +265,14 @@ export function CarManagementTable() {
         onOk={() => form.submit()}
         className="admin-light-modal"
         classNames={{
-          content: "!bg-white !text-[#111]",
+          container: "!bg-white !text-[#111]",
           header: "!bg-white !border-b !border-black/10",
           title: "!text-[#111]",
           body: "!bg-white !text-[#111]",
           footer: "!bg-white !border-t !border-black/10",
-          close: "!text-[#111]",
         }}
         styles={{
-          content: {
+          container: {
             background: "#ffffff",
             border: "1px solid rgba(0,0,0,0.10)",
             borderRadius: 18,

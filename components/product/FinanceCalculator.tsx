@@ -91,7 +91,7 @@ export function FinanceCalculator({ defaultPrice }: Props) {
             name="price"
             rules={[{ required: true, message: "Vui lòng nhập giá xe" }]}
           >
-            <InputNumber
+            <InputNumber<number>
               className="w-full !rounded-xl"
               min={0}
               step={1000}
