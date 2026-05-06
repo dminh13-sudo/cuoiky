@@ -16,7 +16,7 @@ export function CarGrid({ cars, loading }: Props) {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {Array.from({ length: 8 }).map((_, idx) => (
-          <div key={idx} className="rounded-xl border border-gray-200 bg-white p-3">
+          <div key={idx} className="rounded-xl border border-lux-line bg-lux-card p-3">
             <Skeleton.Image active className="!w-full !h-[160px]" />
             <div className="mt-3">
               <Skeleton active paragraph={{ rows: 3 }} />
@@ -29,7 +29,7 @@ export function CarGrid({ cars, loading }: Props) {
 
   if (cars.length === 0) {
     return (
-      <div className="rounded-xl border border-gray-200 bg-white p-10">
+      <div className="rounded-xl border border-lux-line bg-lux-card p-10">
         <Empty description="Không tìm thấy xe phù hợp" />
       </div>
     );
@@ -40,7 +40,7 @@ export function CarGrid({ cars, loading }: Props) {
       {cars.map((car) => (
         <Link key={car.id} href={`/product/${car.id}`} className="block">
           <Card
-            className="h-full transition-shadow hover:shadow-md"
+            className="h-full border border-lux-line bg-lux-card text-lux-text transition-shadow hover:shadow-[0_14px_36px_rgba(0,0,0,0.45)]"
             cover={
               // AntD Card cover expects a normal <img> tag.
               // Next/Image is possible, but not required for this assignment.

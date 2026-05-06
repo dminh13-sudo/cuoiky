@@ -53,10 +53,10 @@ export function FinanceCalculator({ defaultPrice }: Props) {
 
   return (
     <Card className="rounded-2xl" bodyStyle={{ padding: 20 }}>
-      <Title level={4} className="!mb-1">
+      <Title level={4} className="!mb-1 !text-lux-text">
         Công cụ tính trả góp
       </Title>
-      <Text type="secondary">
+      <Text className="!text-lux-muted">
         Ước tính nhanh số tiền trả mỗi tháng (mang tính tham khảo).
       </Text>
 
@@ -95,21 +95,21 @@ export function FinanceCalculator({ defaultPrice }: Props) {
       </Form>
 
       <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
-          <div className="text-xs text-gray-600">Trả trước</div>
-          <div className="mt-1 text-lg font-semibold text-gray-900">
+        <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
+          <div className="text-xs text-lux-muted">Trả trước</div>
+          <div className="mt-1 text-lg font-semibold text-lux-text">
             {formatUSD(computed.downPayment)}
           </div>
         </div>
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
-          <div className="text-xs text-gray-600">Số tiền vay</div>
-          <div className="mt-1 text-lg font-semibold text-gray-900">
+        <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
+          <div className="text-xs text-lux-muted">Số tiền vay</div>
+          <div className="mt-1 text-lg font-semibold text-lux-text">
             {formatUSD(computed.principal)}
           </div>
         </div>
-        <div className="rounded-xl border border-gray-900 bg-gray-900 p-4">
-          <div className="text-xs text-white/70">Trả mỗi tháng</div>
-          <div className="mt-1 text-lg font-semibold text-white">
+        <div className="rounded-xl border border-lux-gold/40 bg-lux-card p-4 shadow-[0_0_0_1px_rgba(201,162,39,0.18)_inset]">
+          <div className="text-xs text-lux-muted">Trả mỗi tháng</div>
+          <div className="mt-1 text-lg font-semibold text-lux-goldSoft">
             {formatUSD(computed.monthly)}
           </div>
         </div>

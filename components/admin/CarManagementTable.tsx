@@ -160,8 +160,8 @@ export function CarManagementTable() {
             }}
           />
           <div>
-            <div className="font-semibold text-gray-900">{car.name}</div>
-            <div className="text-xs text-gray-600">
+            <div className="font-semibold text-lux-text">{car.name}</div>
+            <div className="text-xs text-lux-muted">
               {car.brand} • {car.category} • {car.year}
             </div>
           </div>
@@ -213,14 +213,14 @@ export function CarManagementTable() {
 
       <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="text-xl font-semibold text-gray-900">Quản lý xe</div>
-          <div className="text-sm text-gray-600">CRUD dữ liệu xe trên Mock API</div>
+          <div className="text-xl font-semibold text-lux-text">Quản lý xe</div>
+          <div className="text-sm text-lux-muted">CRUD dữ liệu xe trên Mock API</div>
         </div>
         <div className="flex items-center gap-2">
           <Button onClick={() => void reload()} disabled={loading}>
             Tải lại
           </Button>
-          <Button type="primary" className="!bg-gray-900 hover:!bg-black" onClick={openCreate}>
+          <Button type="primary" onClick={openCreate}>
             Thêm xe
           </Button>
         </div>
@@ -242,7 +242,7 @@ export function CarManagementTable() {
         </div>
       ) : null}
 
-      <Card className="rounded-2xl" bodyStyle={{ padding: 0 }}>
+      <Card className="rounded-2xl border border-lux-line bg-lux-card" bodyStyle={{ padding: 0 }}>
         <Table<Car>
           rowKey="id"
           columns={columns}
@@ -349,7 +349,7 @@ export function CarManagementTable() {
             >
               <Button>Chọn ảnh</Button>
             </Upload>
-            <div className="mt-2 text-xs text-gray-600">
+            <div className="mt-2 text-xs text-lux-muted">
               Lưu ý: Mock API thường không lưu file thật; upload sẽ chuyển sang base64 để dùng luôn.
             </div>
           </Form.Item>

@@ -7,7 +7,7 @@ export default function Layout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-lux-bg text-lux-text">
       <AppHeader />
       <div className="flex-1">{children}</div>
       <AppFooter />

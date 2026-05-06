@@ -18,13 +18,13 @@ export function AppHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-lux-line bg-lux-bg/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3">
         <div className="flex items-center gap-3">
           <BackButton className="!rounded-full" label="← Back" fallbackHref="/" />
           <Link href="/" className="flex items-center gap-2">
-            <span className="rounded-lg bg-gray-900 px-3 py-2 text-sm font-semibold text-white">
-              AutoCar
+            <span className="rounded-lg border border-lux-line bg-lux-surface px-3 py-2 text-sm font-semibold tracking-wide text-lux-text">
+              <span className="text-lux-gold">Auto</span>Car
             </span>
           </Link>
         </div>
@@ -38,7 +38,9 @@ export function AppHeader() {
                 href={item.href}
                 className={[
                   "rounded-full px-4 py-2 text-sm transition-colors",
-                  active ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100",
+                  active
+                    ? "border border-lux-gold/60 bg-lux-surface text-lux-text shadow-[0_0_0_1px_rgba(201,162,39,0.18)_inset]"
+                    : "text-lux-muted hover:bg-lux-surface hover:text-lux-text",
                 ].join(" ")}
               >
                 {item.label}

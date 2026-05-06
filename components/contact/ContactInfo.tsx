@@ -9,45 +9,45 @@ type Props = {
 
 export function ContactInfo({ address, hotline, openHours, mapEmbedUrl }: Props) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-      <div className="text-lg font-semibold text-gray-900">Thông tin liên hệ</div>
-      <div className="mt-1 text-sm text-gray-600">
+    <div className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+      <div className="text-lg font-semibold text-lux-text">Thông tin liên hệ</div>
+      <div className="mt-1 text-sm text-lux-muted">
         Kết nối trực tiếp để được tư vấn nhanh và đặt lịch lái thử.
       </div>
 
       <div className="mt-4 grid grid-cols-1 gap-3">
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
-          <div className="text-xs font-medium text-gray-600">Hotline</div>
-          <div className="mt-1 text-base font-semibold text-gray-900">{hotline}</div>
+        <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
+          <div className="text-xs font-medium text-lux-muted">Hotline</div>
+          <div className="mt-1 text-base font-semibold text-lux-text">{hotline}</div>
           <div className="mt-2">
             <Link
               href={`tel:${hotline.replace(/\s+/g, "")}`}
-              className="inline-flex rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-black"
+              className="inline-flex rounded-full border border-lux-gold/40 bg-lux-gold px-4 py-2 text-sm font-semibold text-black hover:bg-lux-goldSoft"
             >
               Gọi ngay
             </Link>
           </div>
         </div>
 
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
-          <div className="text-xs font-medium text-gray-600">Địa chỉ showroom</div>
-          <div className="mt-1 text-sm text-gray-900">{address}</div>
+        <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
+          <div className="text-xs font-medium text-lux-muted">Địa chỉ showroom</div>
+          <div className="mt-1 text-sm text-lux-text">{address}</div>
         </div>
 
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
-          <div className="text-xs font-medium text-gray-600">Giờ mở cửa</div>
+        <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
+          <div className="text-xs font-medium text-lux-muted">Giờ mở cửa</div>
           <div className="mt-2 flex flex-wrap gap-2">
-            <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-200">
+            <span className="inline-flex items-center rounded-full bg-lux-card px-3 py-1 text-xs font-semibold text-lux-goldSoft ring-1 ring-lux-line">
               Mở cửa: {openHours}
             </span>
-            <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-200">
+            <span className="inline-flex items-center rounded-full bg-lux-card px-3 py-1 text-xs font-semibold text-lux-text ring-1 ring-lux-line">
               Hỗ trợ đặt lịch nhanh
             </span>
           </div>
         </div>
       </div>
 
-      <div className="mt-4 overflow-hidden rounded-2xl border border-gray-200">
+      <div className="mt-4 overflow-hidden rounded-2xl border border-lux-line">
         <iframe
           title="Showroom map"
           src={mapEmbedUrl}

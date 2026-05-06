@@ -145,7 +145,7 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
             <div className="md:col-span-1 md:flex md:items-end">
               <Button
                 type="primary"
-                className="!h-11 !w-full !rounded-xl !bg-white !font-semibold !text-gray-900 hover:!bg-gray-100"
+                className="!h-11 !w-full !rounded-xl !font-semibold"
                 onClick={() => goSearch()}
               >
                 Tìm xe ngay

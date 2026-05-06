@@ -21,7 +21,7 @@ export function CarMediaGallery({ name, images }: Props) {
 
   return (
     <div className="space-y-3">
-      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+      <div className="overflow-hidden rounded-2xl border border-lux-line bg-lux-card">
         <Image.PreviewGroup>
           <Image
             src={list[active]}
@@ -40,8 +40,10 @@ export function CarMediaGallery({ name, images }: Props) {
             type="button"
             onClick={() => setActive(idx)}
             className={[
-              "overflow-hidden rounded-xl border bg-white transition-colors",
-              idx === active ? "border-gray-900" : "border-gray-200 hover:border-gray-400",
+              "overflow-hidden rounded-xl border bg-lux-card transition-colors",
+              idx === active
+                ? "border-lux-gold/70 shadow-[0_0_0_1px_rgba(201,162,39,0.18)_inset]"
+                : "border-lux-line hover:border-lux-gold/40",
             ].join(" ")}
             aria-label={`Xem ảnh ${idx + 1}`}
           >

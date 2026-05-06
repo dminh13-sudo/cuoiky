@@ -22,11 +22,11 @@ export function BrandStrip({ brands }: Props) {
   const list = (brands.length ? brands : FALLBACK_BRANDS).slice(0, 12);
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5">
+    <div className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
       <div className="mb-4 flex items-end justify-between gap-3">
         <div>
-          <div className="text-lg font-semibold text-gray-900">Hãng xe phổ biến</div>
-          <div className="text-sm text-gray-600">
+          <div className="text-lg font-semibold text-lux-text">Hãng xe phổ biến</div>
+          <div className="text-sm text-lux-muted">
             Chọn logo để lọc nhanh danh sách xe theo hãng
           </div>
         </div>
@@ -40,9 +40,9 @@ export function BrandStrip({ brands }: Props) {
               key={brand}
               type="button"
               onClick={() => router.push(`/cars?brand=${encodeURIComponent(brand)}`)}
-              className="group flex items-center justify-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-3 py-3 transition-colors hover:bg-white"
+              className="group flex items-center justify-center gap-3 rounded-xl border border-lux-line bg-lux-surface px-3 py-3 transition-colors hover:border-lux-gold/40 hover:bg-lux-card"
             >
-              <span className="relative h-9 w-9 overflow-hidden rounded-lg border border-gray-200 bg-white">
+              <span className="relative h-9 w-9 overflow-hidden rounded-lg border border-lux-line bg-lux-card">
                 <Image
                   src={`/brands/${slug}.svg`}
                   alt={`${brand} logo`}
@@ -50,7 +50,7 @@ export function BrandStrip({ brands }: Props) {
                   className="object-contain p-1"
                 />
               </span>
-              <span className="text-sm font-medium text-gray-900 group-hover:text-black">
+              <span className="text-sm font-medium text-lux-text group-hover:text-lux-goldSoft">
                 {brand}
               </span>
             </button>

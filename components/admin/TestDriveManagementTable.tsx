@@ -54,8 +54,8 @@ export function TestDriveManagementTable() {
     <div>
       <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="text-xl font-semibold text-gray-900">Đăng ký lái thử</div>
-          <div className="text-sm text-gray-600">
+          <div className="text-xl font-semibold text-lux-text">Đăng ký lái thử</div>
+          <div className="text-sm text-lux-muted">
             Danh sách khách hàng gửi từ trang chi tiết xe
           </div>
         </div>
@@ -80,7 +80,7 @@ export function TestDriveManagementTable() {
         </div>
       ) : null}
 
-      <Card className="rounded-2xl" bodyStyle={{ padding: 0 }}>
+      <Card className="rounded-2xl border border-lux-line bg-lux-card" bodyStyle={{ padding: 0 }}>
         <Table<TestDriveRequest>
           rowKey="id"
           columns={columns}

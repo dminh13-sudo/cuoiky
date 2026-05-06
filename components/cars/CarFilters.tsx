@@ -33,14 +33,16 @@ export function CarFilters({
 
   return (
     <aside className="w-full lg:w-1/4 lg:pr-6">
-      <div className="rounded-xl border border-gray-200 bg-white p-4">
-        <Title level={4} className="!mb-4">
+      <div className="rounded-xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+        <Title level={4} className="!mb-4 !text-lux-text">
           Bộ lọc
         </Title>
 
         <div className="space-y-5">
           <div>
-            <Text strong>Tìm kiếm</Text>
+            <Text strong className="!text-lux-text">
+              Tìm kiếm
+            </Text>
             <Input.Search
               className="mt-2"
               allowClear
@@ -52,7 +54,9 @@ export function CarFilters({
           </div>
 
           <div>
-            <Text strong>Hãng xe</Text>
+            <Text strong className="!text-lux-text">
+              Hãng xe
+            </Text>
             <Select
               className="mt-2 w-full"
               allowClear
@@ -64,7 +68,9 @@ export function CarFilters({
           </div>
 
           <div>
-            <Text strong>Khoảng giá</Text>
+            <Text strong className="!text-lux-text">
+              Khoảng giá
+            </Text>
             <div className="mt-2 px-2">
               <Slider
                 range
@@ -78,7 +84,7 @@ export function CarFilters({
                   })
                 }
               />
-              <div className="flex items-center justify-between text-xs text-gray-600">
+              <div className="flex items-center justify-between text-xs text-lux-muted">
                 <span>${normalizedMin.toLocaleString("en-US")}</span>
                 <span>${normalizedMax.toLocaleString("en-US")}</span>
               </div>
@@ -86,7 +92,9 @@ export function CarFilters({
           </div>
 
           <div>
-            <Text strong>Loại xe</Text>
+            <Text strong className="!text-lux-text">
+              Loại xe
+            </Text>
             <Checkbox.Group
               className="mt-2 flex flex-col gap-2"
               options={categories.map((c) => ({ label: c, value: c }))}

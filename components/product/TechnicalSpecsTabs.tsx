@@ -98,15 +98,15 @@ function groupSpecs(entries: Array<[string, SpecValue]>) {
 
 function SpecsList({ entries }: { entries: Array<[string, SpecValue]> }) {
   if (entries.length === 0) {
-    return <div className="text-gray-500">Chưa có dữ liệu.</div>;
+    return <div className="text-lux-muted">Chưa có dữ liệu.</div>;
   }
 
   return (
-    <dl className="divide-y divide-gray-100">
+    <dl className="divide-y divide-lux-line/60">
       {entries.map(([k, v]) => (
         <div key={k} className="flex items-start justify-between gap-4 py-3">
-          <dt className="text-sm font-medium text-gray-600">{k}</dt>
-          <dd className="text-sm text-gray-900">{renderSpecValue(v)}</dd>
+          <dt className="text-sm font-medium text-lux-muted">{k}</dt>
+          <dd className="text-sm text-lux-text">{renderSpecValue(v)}</dd>
         </div>
       ))}
     </dl>

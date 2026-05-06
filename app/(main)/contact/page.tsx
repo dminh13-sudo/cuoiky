@@ -9,8 +9,8 @@ export default async function Page() {
   return (
     <main className="mx-auto w-full max-w-7xl px-4 py-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900">Liên hệ & Đăng ký lái thử</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-3xl font-semibold text-lux-text">Liên hệ & Đăng ký lái thử</h1>
+        <p className="mt-2 text-lux-muted">
           Chúng tôi phản hồi nhanh trong giờ mở cửa. Bạn có thể đặt lịch lái thử ngay bên dưới.
         </p>
       </div>

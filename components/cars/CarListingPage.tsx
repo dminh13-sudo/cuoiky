@@ -109,13 +109,13 @@ export default function CarListingPage({ initialFilters }: Props) {
   }, [page, safePage]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-lux-bg text-lux-text">
       <div className="mx-auto w-full max-w-7xl px-4 py-6">
         <div className="mb-5">
-          <Title level={2} className="!mb-1">
+          <Title level={2} className="!mb-1 !text-lux-text">
             Danh sách xe
           </Title>
-          <Text type="secondary">
+          <Text className="!text-lux-muted">
             {loading ? "Đang tải dữ liệu..." : `Tìm thấy ${total} xe`}
           </Text>
         </div>
@@ -168,7 +168,7 @@ export default function CarListingPage({ initialFilters }: Props) {
           />
 
           <main className="w-full lg:w-3/4">
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="rounded-xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
               <CarGrid cars={pagedCars} loading={loading} />
 
               <div className="mt-6 flex justify-center">

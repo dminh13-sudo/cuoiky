@@ -32,7 +32,7 @@ export default async function Page() {
   const featuredCars = pickFeaturedCars(cars, 6);
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-lux-bg text-lux-text">
       <HomeHero
         brands={brands}
         categories={categories}
@@ -50,7 +50,7 @@ export default async function Page() {
         <div className="mt-8 flex justify-center">
           <Link
             href="/cars"
-            className="rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+            className="rounded-full border border-lux-gold/40 bg-lux-gold px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-lux-goldSoft"
           >
             Xem tất cả xe
           </Link>

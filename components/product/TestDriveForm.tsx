@@ -52,10 +52,10 @@ export function TestDriveForm({ carId, carName }: Props) {
     <>
       {contextHolder}
       <Card className="rounded-2xl" bodyStyle={{ padding: 20 }}>
-        <div className="text-lg font-semibold text-gray-900">Đăng ký lái thử</div>
-        <div className="mt-1 text-sm text-gray-600">
+        <div className="text-lg font-semibold text-lux-text">Đăng ký lái thử</div>
+        <div className="mt-1 text-sm text-lux-muted">
           Điền thông tin để nhận tư vấn và đặt lịch lái thử cho{" "}
-          <span className="font-medium text-gray-900">{carName}</span>.
+          <span className="font-medium text-lux-text">{carName}</span>.
         </div>
 
         {error ? (
@@ -121,7 +121,7 @@ export function TestDriveForm({ carId, carName }: Props) {
             type="primary"
             htmlType="submit"
             loading={submitting}
-            className="!h-11 !rounded-xl !bg-gray-900 hover:!bg-black"
+            className="!h-11 !rounded-xl"
           >
             Gửi đăng ký
           </Button>
