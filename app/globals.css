@@ -7,7 +7,8 @@
   --lux-surface: rgba(255, 255, 255, 0.06);
   --lux-card: rgba(255, 255, 255, 0.085);
   --lux-line: rgba(255, 255, 255, 0.12);
-  --lux-muted: rgba(244, 239, 230, 0.72);
+  /* Higher contrast for readability */
+  --lux-muted: rgba(244, 239, 230, 0.86);
   --lux-gold: #c9a227;
   --lux-gold-soft: #e7d6a2;
   --lux-danger: #ff5a5f;
@@ -69,13 +70,138 @@ h3 {
 
 .ant-input,
 .ant-select-selector,
-.ant-input-affix-wrapper {
+.ant-input-affix-wrapper,
+.ant-picker {
   background: rgba(255, 255, 255, 0.06) !important;
   border-color: rgba(255, 255, 255, 0.14) !important;
   color: var(--foreground) !important;
 }
 
+.ant-picker input {
+  color: var(--foreground) !important;
+}
+
+.ant-picker .ant-picker-suffix,
+.ant-picker .ant-picker-clear {
+  color: rgba(244, 239, 230, 0.9) !important;
+}
+
 .ant-select-selection-placeholder,
 .ant-input::placeholder {
-  color: rgba(244, 239, 230, 0.55) !important;
+  color: rgba(244, 239, 230, 0.72) !important;
+}
+
+/* Ensure Ant components match luxury theme (avoid white cards) */
+.ant-card {
+  background: var(--lux-card) !important;
+  border-color: var(--lux-line) !important;
+  color: var(--foreground) !important;
+}
+
+.ant-card-head,
+.ant-card-body {
+  color: var(--foreground) !important;
+}
+
+/* Admin tables & overlays should follow dark luxury theme */
+.ant-table,
+.ant-table-container,
+.ant-table-content,
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  background: transparent !important;
+  color: var(--foreground) !important;
+  border-color: var(--lux-line) !important;
+}
+
+.ant-table-thead > tr > th {
+  color: rgba(244, 239, 230, 0.92) !important;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ant-modal .ant-modal-content,
+.ant-modal .ant-modal-header,
+.ant-modal-content,
+.ant-modal-header,
+.ant-popover-inner,
+.ant-dropdown-menu,
+.ant-select-dropdown {
+  background: #0b0b0c !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--lux-line) !important;
+}
+
+.ant-modal .ant-modal-body,
+.ant-modal .ant-modal-footer {
+  background: transparent !important;
+  color: var(--foreground) !important;
+}
+
+.ant-select-item,
+.ant-select-item-option-content {
+  color: var(--foreground) !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ant-modal-close-x,
+.ant-select-arrow,
+.ant-select-clear {
+  color: rgba(244, 239, 230, 0.92) !important;
+}
+
+.ant-modal-title {
+  color: var(--foreground) !important;
+}
+
+.ant-upload,
+.ant-upload-list,
+.ant-upload-list-item {
+  color: var(--foreground) !important;
+}
+
+/* Ensure Ant form labels stay readable on luxury background */
+.ant-form-item-label > label {
+  color: var(--foreground) !important;
+}
+
+.ant-form-item-explain-error {
+  color: var(--lux-danger) !important;
+}
+
+/* Light modal for admin "Cập nhật xe" (readable on white) */
+.admin-light-modal .ant-modal-title,
+.admin-light-modal .ant-modal-close-x,
+.admin-light-modal .ant-form-item-label > label {
+  color: #111 !important;
+}
+
+.admin-light-modal .ant-form-item-label > label {
+  color: #333 !important;
+}
+
+.admin-light-modal .ant-input,
+.admin-light-modal .ant-input-affix-wrapper,
+.admin-light-modal .ant-select-selector,
+.admin-light-modal .ant-input-number,
+.admin-light-modal .ant-input-number-input,
+.admin-light-modal .ant-picker {
+  background: #fff !important;
+  border-color: rgba(0, 0, 0, 0.18) !important;
+  color: #111 !important;
+}
+
+.admin-light-modal .ant-input::placeholder,
+.admin-light-modal .ant-select-selection-placeholder,
+.admin-light-modal .ant-input-number-input::placeholder {
+  color: rgba(0, 0, 0, 0.45) !important;
 }

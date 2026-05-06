@@ -43,6 +43,12 @@ export function ContactInfo({ address, hotline, openHours, mapEmbedUrl }: Props)
             <span className="inline-flex items-center rounded-full bg-lux-card px-3 py-1 text-xs font-semibold text-lux-text ring-1 ring-lux-line">
               Hỗ trợ đặt lịch nhanh
             </span>
+            <Link
+              href="/warranty"
+              className="inline-flex items-center rounded-full bg-lux-card px-3 py-1 text-xs font-semibold text-lux-text ring-1 ring-lux-line hover:bg-lux-surface"
+            >
+              Bảo hành/Bảo dưỡng định kỳ
+            </Link>
           </div>
         </div>
       </div>

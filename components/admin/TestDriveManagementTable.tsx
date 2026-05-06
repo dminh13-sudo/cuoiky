@@ -1,10 +1,10 @@
 "use client";
 
-import { Alert, Button, Card, Table } from "antd";
+import { Alert, Button, Card, Switch, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useEffect, useState } from "react";
 
-import { getTestDriveRequests, type TestDriveRequest } from "@/services/testDriveService";
+import { getTestDriveRequests, updateTestDriveRequest, type TestDriveRequest } from "@/services/testDriveService";
 
 export function TestDriveManagementTable() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +36,26 @@ export function TestDriveManagementTable() {
     { title: "Xe", dataIndex: "carName", key: "carName", width: 260 },
     { title: "Ngày mong muốn", dataIndex: "preferredDate", key: "preferredDate", width: 170 },
     {
+      title: "Trạng thái",
+      key: "arrived",
+      width: 210,
+      render: (_, r) => (
+        <div className="flex items-center gap-2">
+          <Tag color={r.arrived ? "green" : "default"}>{r.arrived ? "Đã đến" : "Chưa đến"}</Tag>
+          <Switch
+            checked={Boolean(r.arrived)}
+            onChange={(checked) => {
+              const arrivedAt = checked ? new Date().toISOString() : undefined;
+              setItems((prev) =>
+                prev.map((x) => (x.id === r.id ? { ...x, arrived: checked, arrivedAt } : x))
+              );
+              void updateTestDriveRequest(r.id, { arrived: checked, arrivedAt }).catch(() => void reload());
+            }}
+          />
+        </div>
+      ),
+    },
+    {
       title: "Ghi chú",
       dataIndex: "note",
       key: "note",
@@ -45,6 +65,13 @@ export function TestDriveManagementTable() {
       title: "Thời gian",
       dataIndex: "createdAt",
       key: "createdAt",
+      width: 190,
+      render: (v) => (v ? new Date(String(v)).toLocaleString() : "-"),
+    },
+    {
+      title: "Đến lúc",
+      dataIndex: "arrivedAt",
+      key: "arrivedAt",
       width: 190,
       render: (v) => (v ? new Date(String(v)).toLocaleString() : "-"),
     },
@@ -80,7 +107,7 @@ export function TestDriveManagementTable() {
         </div>
       ) : null}
 
-      <Card className="rounded-2xl border border-lux-line bg-lux-card" bodyStyle={{ padding: 0 }}>
+      <Card className="rounded-2xl border border-lux-line bg-lux-card" styles={{ body: { padding: 0 } }}>
         <Table<TestDriveRequest>
           rowKey="id"
           columns={columns}

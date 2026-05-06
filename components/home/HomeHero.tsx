@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Button, Select, Slider, Typography } from "antd";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +16,6 @@ type Props = {
 
 export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
 
   const normalizedMin = Number.isFinite(minPrice) ? minPrice : 0;
   const normalizedMax = Number.isFinite(maxPrice) ? maxPrice : 0;
@@ -27,14 +26,6 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
     normalizedMin,
     normalizedMax,
   ]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    setPriceRange([normalizedMin, normalizedMax]);
-  }, [normalizedMin, normalizedMax]);
 
   const brandOptions = useMemo(
     () => brands.map((b) => ({ label: b, value: b })),
@@ -68,7 +59,7 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
       <div
         className={[
           "absolute inset-0 transition-transform duration-1000 will-change-transform",
-          mounted ? "scale-[1.06]" : "scale-100",
+          "scale-[1.06]",
         ].join(" ")}
       >
         <Image

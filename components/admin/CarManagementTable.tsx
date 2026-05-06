@@ -131,7 +131,7 @@ export function CarManagementTable() {
         await updateCar(editing.id, values);
         api.success("Đã cập nhật xe.");
       } else {
-        await createCar(values as any);
+        await createCar(values);
         api.success("Đã tạo xe mới.");
       }
       setOpenModal(false);
@@ -214,7 +214,7 @@ export function CarManagementTable() {
       <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="text-xl font-semibold text-lux-text">Quản lý xe</div>
-          <div className="text-sm text-lux-muted">CRUD dữ liệu xe trên Mock API</div>
+          <div className="text-sm text-lux-muted">Quản lý danh sách xe</div>
         </div>
         <div className="flex items-center gap-2">
           <Button onClick={() => void reload()} disabled={loading}>
@@ -242,7 +242,7 @@ export function CarManagementTable() {
         </div>
       ) : null}
 
-      <Card className="rounded-2xl border border-lux-line bg-lux-card" bodyStyle={{ padding: 0 }}>
+      <Card className="rounded-2xl border border-lux-line bg-lux-card" styles={{ body: { padding: 0 } }}>
         <Table<Car>
           rowKey="id"
           columns={columns}
@@ -263,6 +263,34 @@ export function CarManagementTable() {
         cancelText="Huỷ"
         confirmLoading={saving}
         onOk={() => form.submit()}
+        className="admin-light-modal"
+        classNames={{
+          content: "!bg-white !text-[#111]",
+          header: "!bg-white !border-b !border-black/10",
+          title: "!text-[#111]",
+          body: "!bg-white !text-[#111]",
+          footer: "!bg-white !border-t !border-black/10",
+          close: "!text-[#111]",
+        }}
+        styles={{
+          content: {
+            background: "#ffffff",
+            border: "1px solid rgba(0,0,0,0.10)",
+            borderRadius: 18,
+            boxShadow: "0 18px 46px rgba(0,0,0,0.25)",
+          },
+          header: {
+            background: "transparent",
+            borderBottom: "1px solid rgba(0,0,0,0.10)",
+          },
+          body: {
+            background: "transparent",
+          },
+          footer: {
+            background: "transparent",
+            borderTop: "1px solid rgba(0,0,0,0.10)",
+          },
+        }}
       >
         <Form<CarFormValues>
           form={form}
@@ -275,7 +303,7 @@ export function CarManagementTable() {
             name="name"
             rules={[{ required: true, message: "Vui lòng nhập tên xe" }]}
           >
-            <Input placeholder="VD: Lamborghini Aventador SVJ" />
+            <Input placeholder="VD: Lamborghini Aventador SVJ" className="!rounded-xl" />
           </Form.Item>
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -310,7 +338,7 @@ export function CarManagementTable() {
               name="year"
               rules={[{ required: true, message: "Vui lòng nhập năm" }]}
             >
-              <InputNumber className="w-full" min={1900} max={2100} />
+              <InputNumber className="w-full !rounded-xl" min={1900} max={2100} />
             </Form.Item>
 
             <Form.Item
@@ -318,7 +346,7 @@ export function CarManagementTable() {
               name="price"
               rules={[{ required: true, message: "Vui lòng nhập giá" }]}
             >
-              <InputNumber className="w-full" min={0} step={1000} />
+              <InputNumber className="w-full !rounded-xl" min={0} step={1000} />
             </Form.Item>
           </div>
 
@@ -327,7 +355,7 @@ export function CarManagementTable() {
             name="image"
             rules={[{ required: true, message: "Vui lòng nhập ảnh" }]}
           >
-            <Input placeholder="https://..." />
+            <Input placeholder="https://..." className="!rounded-xl" />
           </Form.Item>
 
           <Form.Item label="Upload ảnh (tự chuyển base64)">
@@ -355,7 +383,7 @@ export function CarManagementTable() {
           </Form.Item>
 
           <Form.Item label="Mô tả" name="description">
-            <Input.TextArea rows={3} placeholder="Mô tả ngắn..." />
+            <Input.TextArea rows={3} placeholder="Mô tả ngắn..." className="!rounded-xl" />
           </Form.Item>
 
           <Form.Item label="Nổi bật" name="isFeatured" valuePropName="checked">

@@ -10,7 +10,7 @@ export function AppFooter() {
               <span className="text-lux-gold">Auto</span>Car Showroom
             </div>
             <div className="mt-1 text-sm text-lux-muted">
-              Luxury UI • Next.js App Router • Ant Design • Tailwind
+              Sự thành công của bạn là niềm vui của chúng tôi
             </div>
           </div>
 

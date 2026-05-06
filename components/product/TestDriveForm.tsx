@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Button, Card, Form, Input, message } from "antd";
+import { Alert, Button, Card, DatePicker, Divider, Form, Input, message } from "antd";
 import { useState } from "react";
 
 import { createTestDriveRequest } from "@/services/testDriveService";
@@ -14,7 +14,7 @@ type FormValues = {
   fullName: string;
   email: string;
   phone: string;
-  preferredDate?: string;
+  preferredDate?: { format: (fmt: string) => string } | null;
   note?: string;
 };
 
@@ -24,6 +24,7 @@ export function TestDriveForm({ carId, carName }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [api, contextHolder] = message.useMessage();
+  const [form] = Form.useForm<FormValues>();
 
   async function onFinish(values: FormValues) {
     try {
@@ -36,11 +37,12 @@ export function TestDriveForm({ carId, carName }: Props) {
         fullName: values.fullName,
         email: values.email,
         phone: values.phone,
-        preferredDate: values.preferredDate,
+        preferredDate: values.preferredDate ? values.preferredDate.format("DD/MM/YYYY") : undefined,
         note: values.note,
       });
 
       api.success("Đã gửi đăng ký lái thử. Chúng tôi sẽ liên hệ sớm!");
+      form.resetFields();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Gửi đăng ký thất bại. Vui lòng thử lại.");
     } finally {
@@ -51,11 +53,21 @@ export function TestDriveForm({ carId, carName }: Props) {
   return (
     <>
       {contextHolder}
-      <Card className="rounded-2xl" bodyStyle={{ padding: 20 }}>
-        <div className="text-lg font-semibold text-lux-text">Đăng ký lái thử</div>
-        <div className="mt-1 text-sm text-lux-muted">
-          Điền thông tin để nhận tư vấn và đặt lịch lái thử cho{" "}
-          <span className="font-medium text-lux-text">{carName}</span>.
+      <Card
+        className="rounded-2xl !border !border-lux-line !bg-lux-card text-lux-text shadow-[0_10px_24px_rgba(0,0,0,0.3)]"
+        styles={{ body: { padding: 20 } }}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <div className="text-lg font-semibold text-lux-text">Đăng ký lái thử</div>
+            <div className="mt-1 text-sm text-lux-muted">
+              Điền thông tin để nhận tư vấn và đặt lịch lái thử cho{" "}
+              <span className="font-medium text-lux-text">{carName}</span>.
+            </div>
+          </div>
+          <div className="hidden rounded-full border border-lux-gold/40 bg-lux-surface px-3 py-1 text-xs font-semibold text-lux-goldSoft md:inline-flex">
+            Ưu tiên phản hồi nhanh
+          </div>
         </div>
 
         {error ? (
@@ -65,18 +77,20 @@ export function TestDriveForm({ carId, carName }: Props) {
         ) : null}
 
         <Form<FormValues>
+          form={form}
           layout="vertical"
           className="mt-4"
           onFinish={(v) => void onFinish(v)}
           requiredMark={false}
         >
+          <Divider className="!my-3 !border-lux-line/60" />
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
             <Form.Item
               label="Họ và tên"
               name="fullName"
               rules={[{ required: true, message: "Vui lòng nhập họ và tên" }]}
             >
-              <Input placeholder="Nguyễn Văn A" />
+              <Input placeholder="Nguyễn Văn A" className="!rounded-xl" />
             </Form.Item>
 
             <Form.Item
@@ -87,7 +101,7 @@ export function TestDriveForm({ carId, carName }: Props) {
                 { type: "email", message: "Email không hợp lệ" },
               ]}
             >
-              <Input placeholder="name@example.com" />
+              <Input placeholder="name@example.com" className="!rounded-xl" />
             </Form.Item>
 
             <Form.Item
@@ -105,26 +119,37 @@ export function TestDriveForm({ carId, carName }: Props) {
                 },
               ]}
             >
-              <Input placeholder="0901234567" />
+              <Input placeholder="0901234567" className="!rounded-xl" />
             </Form.Item>
 
             <Form.Item label="Ngày mong muốn" name="preferredDate">
-              <Input placeholder="VD: 10/05/2026 (hoặc cuối tuần)" />
+              <DatePicker
+                className="w-full !rounded-xl"
+                format="DD/MM/YYYY"
+                placeholder="Chọn ngày"
+              />
             </Form.Item>
           </div>
 
           <Form.Item label="Ghi chú" name="note">
-            <Input.TextArea rows={4} placeholder="Bạn muốn lái thử tại đâu? Khung giờ nào?" />
+            <Input.TextArea
+              rows={4}
+              placeholder="Bạn muốn lái thử tại đâu? Khung giờ nào?"
+              className="!rounded-xl"
+            />
           </Form.Item>
 
           <Button
-            type="primary"
             htmlType="submit"
             loading={submitting}
-            className="!h-11 !rounded-xl"
+            className="!h-11 !w-full !rounded-xl !border !border-lux-gold/40 !bg-lux-gold !font-semibold !text-black hover:!bg-lux-goldSoft"
           >
             Gửi đăng ký
           </Button>
+
+          <div className="mt-3 text-xs text-lux-muted">
+            Bằng việc gửi đăng ký, bạn đồng ý để chúng tôi liên hệ xác nhận lịch lái thử.
+          </div>
         </Form>
       </Card>
     </>
