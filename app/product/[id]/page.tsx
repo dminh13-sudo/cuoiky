@@ -66,17 +66,19 @@ export default async function Page({ params }: PageProps) {
   );
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-8">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div className="mx-auto w-full max-w-6xl px-3 py-6 sm:px-4 sm:py-8">
+      <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2">
         <CarMediaGallery name={car.name} images={galleryImages} />
 
-        <div className="space-y-4">
-          <div className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+        <div className="min-w-0 space-y-4">
+          <div className="rounded-2xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)] sm:p-5">
             <div className="text-sm text-lux-muted">
               {car.brand} • {car.category} • {car.year}
             </div>
-            <h1 className="mt-1 text-2xl font-semibold text-lux-text">{car.name}</h1>
-            <div className="mt-3 text-3xl font-bold text-lux-text">{formatCurrencyUSD(car.price)}</div>
+            <h1 className="mt-1 break-words text-2xl font-semibold text-lux-text">{car.name}</h1>
+            <div className="mt-3 break-words text-2xl font-bold text-lux-text sm:text-3xl">
+              {formatCurrencyUSD(car.price)}
+            </div>
 
             {car.description ? (
               <p className="mt-4 leading-relaxed text-lux-muted">{car.description}</p>
@@ -85,7 +87,7 @@ export default async function Page({ params }: PageProps) {
             )}
           </div>
 
-          <div className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+          <div className="rounded-2xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)] sm:p-5">
             <h2 className="text-lg font-semibold text-lux-text">Màu sắc</h2>
             {colors.length ? (
               <div className="mt-3 flex flex-wrap gap-2">
@@ -108,15 +110,15 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <section className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+        <section className="min-w-0 rounded-2xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)] sm:p-5">
           <h2 className="text-lg font-semibold text-lux-text">Thông số kỹ thuật</h2>
           <div className="mt-3">
             <TechnicalSpecsTabs specs={car.specs ?? buildFallbackSpecs(car)} />
           </div>
         </section>
 
-        <section className="space-y-6">
-          <div className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+        <section className="min-w-0 space-y-6">
+          <div className="rounded-2xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)] sm:p-5">
             <h2 className="text-lg font-semibold text-lux-text">Tính năng</h2>
             {features.length ? (
               <ul className="mt-4 space-y-2">

@@ -27,8 +27,8 @@ const TEAM = [
 
 export default function Page() {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-10">
-      <div className="rounded-3xl border border-lux-line bg-lux-card p-8 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+    <main className="mx-auto w-full max-w-7xl px-3 py-6 sm:px-4 sm:py-10">
+      <div className="rounded-2xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_30px_rgba(0,0,0,0.35)] sm:rounded-3xl sm:p-8">
         <div className="max-w-3xl">
           <h1 className="text-3xl font-semibold text-lux-text">Hồ sơ năng lực Showroom AutoCar</h1>
           <p className="mt-3 text-lux-muted">

@@ -36,7 +36,7 @@ export function CarGrid({ cars, loading }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {cars.map((car) => (
         <Link key={car.id} href={`/product/${car.id}`} className="block">
           <Card
@@ -56,14 +56,14 @@ export function CarGrid({ cars, loading }: Props) {
               />
             }
           >
-            <div className="space-y-2">
-              <div className="line-clamp-2 text-base font-semibold">{car.name}</div>
+            <div className="min-w-0 space-y-2">
+              <div className="line-clamp-2 break-words text-base font-semibold">{car.name}</div>
               <div className="flex flex-wrap gap-2">
                 <Tag color="blue">{car.brand}</Tag>
                 <Tag>{car.category}</Tag>
                 <Tag color="green">{car.year}</Tag>
               </div>
-              <div className="text-lg font-bold">{formatCurrencyUSD(car.price)}</div>
+              <div className="break-words text-lg font-bold">{formatCurrencyUSD(car.price)}</div>
             </div>
           </Card>
         </Link>

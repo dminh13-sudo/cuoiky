@@ -14,11 +14,19 @@ type Props = {
   maxPrice: number;
 };
 
+function clampPriceRange(value: [number, number], min: number, max: number): [number, number] {
+  const safeMax = Math.max(min + 1, max);
+  const low = Math.max(min, Math.min(value[0], safeMax));
+  const high = Math.max(low, Math.min(value[1], safeMax));
+  return [low, high];
+}
+
 export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
   const router = useRouter();
 
   const normalizedMin = Number.isFinite(minPrice) ? minPrice : 0;
   const normalizedMax = Number.isFinite(maxPrice) ? maxPrice : 0;
+  const sliderMax = Math.max(normalizedMin + 1, normalizedMax);
 
   const [brand, setBrand] = useState<string | undefined>(undefined);
   const [category, setCategory] = useState<string | undefined>(undefined);
@@ -43,7 +51,7 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
   }) {
     const b = next?.brand ?? brand;
     const c = next?.category ?? category;
-    const pr = next?.priceRange ?? priceRange;
+    const pr = clampPriceRange(next?.priceRange ?? priceRange, normalizedMin, sliderMax);
 
     const qs = new URLSearchParams();
     if (b) qs.set("brand", b);
@@ -72,17 +80,17 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/55 to-black/85" />
       </div>
 
-      <div className="relative mx-auto flex min-h-[82vh] w-full max-w-7xl flex-col justify-end px-4 pb-12 pt-20">
+      <div className="relative mx-auto flex min-h-[calc(100svh-64px)] w-full max-w-7xl flex-col justify-end px-3 pb-8 pt-16 sm:px-4 sm:pb-12 sm:pt-20 lg:min-h-[82vh]">
         <div className="max-w-2xl">
-          <Title className="!mb-3 !text-white" level={1}>
+          <Title className="!mb-3 !text-3xl !text-white sm:!text-5xl" level={1}>
             Showroom xe cao cấp.
           </Title>
-          <Text className="text-base !text-white/80">
+          <Text className="text-sm !text-white/80 sm:text-base">
             Tìm kiếm theo hãng, loại xe và ngân sách. Chọn xe phù hợp và xem chi tiết ngay.
           </Text>
         </div>
 
-        <div className="mt-8 w-full max-w-4xl rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
+        <div className="mt-6 w-full max-w-4xl rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur sm:mt-8 sm:p-4">
           <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
             <div className="md:col-span-1">
               <Text className="!text-white/90" strong>
@@ -122,9 +130,11 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
                 <Slider
                   range
                   min={normalizedMin}
-                  max={normalizedMax}
-                  value={priceRange}
-                  onChange={(v) => setPriceRange(v as [number, number])}
+                  max={sliderMax}
+                  value={clampPriceRange(priceRange, normalizedMin, sliderMax)}
+                  onChange={(v) =>
+                    setPriceRange(clampPriceRange(v as [number, number], normalizedMin, sliderMax))
+                  }
                 />
                 <div className="flex items-center justify-between text-xs text-white/70">
                   <span>${normalizedMin.toLocaleString("en-US")}</span>
@@ -154,7 +164,7 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
               onClick={() => {
                 setBrand(undefined);
                 setCategory(undefined);
-                setPriceRange([normalizedMin, normalizedMax]);
+                setPriceRange([normalizedMin, sliderMax]);
               }}
             >
               Xoá bộ lọc

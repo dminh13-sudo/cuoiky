@@ -86,7 +86,7 @@ export function TestDriveManagementTable() {
             Danh sách khách hàng gửi từ trang chi tiết xe
           </div>
         </div>
-        <Button onClick={() => void reload()} disabled={loading}>
+        <Button className="self-start md:self-auto" onClick={() => void reload()} disabled={loading}>
           Tải lại
         </Button>
       </div>
@@ -107,13 +107,17 @@ export function TestDriveManagementTable() {
         </div>
       ) : null}
 
-      <Card className="rounded-2xl border border-lux-line bg-lux-card" styles={{ body: { padding: 0 } }}>
+      <Card
+        className="overflow-hidden rounded-2xl border border-lux-line bg-lux-card"
+        styles={{ body: { padding: 0 } }}
+      >
         <Table<TestDriveRequest>
           rowKey="id"
           columns={columns}
           dataSource={items}
           loading={loading}
           pagination={{ pageSize: 8 }}
+          scroll={{ x: 1280 }}
           locale={{ emptyText: loading ? "Đang tải..." : "Chưa có đăng ký lái thử." }}
         />
       </Card>

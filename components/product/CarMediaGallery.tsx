@@ -26,14 +26,14 @@ export function CarMediaGallery({ name, images }: Props) {
           <Image
             src={list[active]}
             alt={name}
-            className="!h-[320px] !w-full object-cover md:!h-[420px]"
+            className="!h-[240px] !w-full object-cover sm:!h-[320px] lg:!h-[420px]"
             fallback="/car-placeholder.svg"
             preview={{ mask: "Xem toàn màn hình / Zoom" }}
           />
         </Image.PreviewGroup>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
+      <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 sm:gap-3">
         {list.slice(0, 12).map((src, idx) => (
           <button
             key={`${src}-${idx}`}

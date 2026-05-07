@@ -57,8 +57,8 @@ export function TestDriveForm({ carId, carName }: Props) {
         className="rounded-2xl !border !border-lux-line !bg-lux-card text-lux-text shadow-[0_10px_24px_rgba(0,0,0,0.3)]"
         styles={{ body: { padding: 20 } }}
       >
-        <div className="flex items-start justify-between gap-3">
-          <div>
+        <div className="flex min-w-0 items-start justify-between gap-3">
+          <div className="min-w-0">
             <div className="text-lg font-semibold text-lux-text">Đăng ký lái thử</div>
             <div className="mt-1 text-sm text-lux-muted">
               Điền thông tin để nhận tư vấn và đặt lịch lái thử cho{" "}

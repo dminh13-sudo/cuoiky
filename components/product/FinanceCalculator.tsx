@@ -59,8 +59,8 @@ export function FinanceCalculator({ defaultPrice }: Props) {
       className="rounded-2xl !border !border-lux-line !bg-lux-card text-lux-text shadow-[0_10px_24px_rgba(0,0,0,0.3)]"
       styles={{ body: { padding: 20 } }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
+      <div className="flex min-w-0 items-start justify-between gap-3">
+        <div className="min-w-0">
           <Title level={4} className="!mb-1 !text-lux-text">
             Công cụ tính trả góp
           </Title>
@@ -129,22 +129,22 @@ export function FinanceCalculator({ defaultPrice }: Props) {
 
       <Divider className="!my-4 !border-lux-line/60" />
 
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+      <div className="grid min-w-0 grid-cols-1 gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
           <div className="text-xs text-lux-muted">Trả trước</div>
-          <div className="mt-1 text-lg font-semibold text-lux-text">
+          <div className="mt-1 break-words text-lg font-semibold text-lux-text">
             {formatUSD(computed.downPayment)}
           </div>
         </div>
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
           <div className="text-xs text-lux-muted">Số tiền vay</div>
-          <div className="mt-1 text-lg font-semibold text-lux-text">
+          <div className="mt-1 break-words text-lg font-semibold text-lux-text">
             {formatUSD(computed.principal)}
           </div>
         </div>
         <div className="rounded-xl border border-lux-gold/40 bg-lux-card p-4 shadow-[0_0_0_1px_rgba(201,162,39,0.18)_inset]">
           <div className="text-xs text-lux-muted">Trả mỗi tháng</div>
-          <div className="mt-1 text-lg font-semibold text-lux-goldSoft">
+          <div className="mt-1 break-words text-lg font-semibold text-lux-goldSoft">
             {formatUSD(computed.monthly)}
           </div>
         </div>
@@ -153,7 +153,7 @@ export function FinanceCalculator({ defaultPrice }: Props) {
       <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
           <div className="text-xs text-lux-muted">Tổng lãi (ước tính)</div>
-          <div className="mt-1 text-base font-semibold text-lux-text">
+          <div className="mt-1 break-words text-base font-semibold text-lux-text">
             {formatUSD(computed.totalInterest)}
           </div>
           <div className="mt-1 text-xs text-lux-muted">
@@ -162,7 +162,7 @@ export function FinanceCalculator({ defaultPrice }: Props) {
         </div>
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
           <div className="text-xs text-lux-muted">Tổng phải trả (ước tính)</div>
-          <div className="mt-1 text-base font-semibold text-lux-text">
+          <div className="mt-1 break-words text-base font-semibold text-lux-text">
             {formatUSD(computed.totalPaid)}
           </div>
           <div className="mt-1 text-xs text-lux-muted">

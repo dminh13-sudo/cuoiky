@@ -9,7 +9,7 @@ type Props = {
 
 export function ContactInfo({ address, hotline, openHours, mapEmbedUrl }: Props) {
   return (
-    <div className="rounded-2xl border border-lux-line bg-lux-card p-5 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+    <div className="min-w-0 rounded-2xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)] sm:p-5">
       <div className="text-lg font-semibold text-lux-text">Thông tin liên hệ</div>
       <div className="mt-1 text-sm text-lux-muted">
         Kết nối trực tiếp để được tư vấn nhanh và đặt lịch lái thử.
@@ -18,7 +18,7 @@ export function ContactInfo({ address, hotline, openHours, mapEmbedUrl }: Props)
       <div className="mt-4 grid grid-cols-1 gap-3">
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
           <div className="text-xs font-medium text-lux-muted">Hotline</div>
-          <div className="mt-1 text-base font-semibold text-lux-text">{hotline}</div>
+          <div className="mt-1 break-words text-base font-semibold text-lux-text">{hotline}</div>
           <div className="mt-2">
             <Link
               href={`tel:${hotline.replace(/\s+/g, "")}`}
@@ -31,7 +31,7 @@ export function ContactInfo({ address, hotline, openHours, mapEmbedUrl }: Props)
 
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
           <div className="text-xs font-medium text-lux-muted">Địa chỉ showroom</div>
-          <div className="mt-1 text-sm text-lux-text">{address}</div>
+          <div className="mt-1 break-words text-sm text-lux-text">{address}</div>
         </div>
 
         <div className="rounded-xl border border-lux-line bg-lux-surface p-4">
@@ -57,7 +57,7 @@ export function ContactInfo({ address, hotline, openHours, mapEmbedUrl }: Props)
         <iframe
           title="Showroom map"
           src={mapEmbedUrl}
-          className="h-[320px] w-full"
+          className="h-[240px] w-full sm:h-[320px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />

@@ -20,6 +20,13 @@ type Props = {
   onChange: (next: CarFiltersValue) => void;
 };
 
+function clampPriceRange(value: [number, number], min: number, max: number): [number, number] {
+  const safeMax = Math.max(min + 1, max);
+  const low = Math.max(min, Math.min(value[0], safeMax));
+  const high = Math.max(low, Math.min(value[1], safeMax));
+  return [low, high];
+}
+
 export function CarFilters({
   value,
   brands,
@@ -30,6 +37,8 @@ export function CarFilters({
 }: Props) {
   const normalizedMin = Number.isFinite(minPrice) ? minPrice : 0;
   const normalizedMax = Number.isFinite(maxPrice) ? maxPrice : 0;
+  const sliderMax = Math.max(normalizedMin + 1, normalizedMax);
+  const safePriceRange = clampPriceRange(value.priceRange, normalizedMin, sliderMax);
 
   return (
     <aside className="w-full lg:w-1/4 lg:pr-6">
@@ -75,12 +84,12 @@ export function CarFilters({
               <Slider
                 range
                 min={normalizedMin}
-                max={normalizedMax}
-                value={value.priceRange}
+                max={sliderMax}
+                value={safePriceRange}
                 onChange={(priceRange) =>
                   onChange({
                     ...value,
-                    priceRange: priceRange as [number, number],
+                    priceRange: clampPriceRange(priceRange as [number, number], normalizedMin, sliderMax),
                   })
                 }
               />

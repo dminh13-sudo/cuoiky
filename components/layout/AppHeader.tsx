@@ -19,10 +19,10 @@ export function AppHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-lux-line bg-lux-bg/70 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3">
-        <div className="flex items-center gap-3">
-          <BackButton className="!rounded-full" label="← Back" fallbackHref="/" />
-          <Link href="/" className="flex items-center gap-2">
+      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-3 py-3 sm:px-4">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <BackButton className="!rounded-full !px-3" label="Back" fallbackHref="/" />
+          <Link href="/" className="flex min-w-0 items-center gap-2">
             <span className="rounded-lg border border-lux-line bg-lux-surface px-3 py-2 text-sm font-semibold tracking-wide text-lux-text">
               <span className="text-lux-gold">Auto</span>Car
             </span>
@@ -49,7 +49,7 @@ export function AppHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
           <Button size="small" href="/cars">
             Xe
           </Button>

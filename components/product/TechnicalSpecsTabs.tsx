@@ -104,9 +104,9 @@ function SpecsList({ entries }: { entries: Array<[string, SpecValue]> }) {
   return (
     <dl className="divide-y divide-lux-line/60">
       {entries.map(([k, v]) => (
-        <div key={k} className="flex items-start justify-between gap-4 py-3">
-          <dt className="text-sm font-medium text-lux-muted">{k}</dt>
-          <dd className="text-sm text-lux-text">{renderSpecValue(v)}</dd>
+        <div key={k} className="grid gap-1 py-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-4">
+          <dt className="break-words text-sm font-medium text-lux-muted">{k}</dt>
+          <dd className="break-words text-sm text-lux-text sm:text-right">{renderSpecValue(v)}</dd>
         </div>
       ))}
     </dl>
@@ -120,6 +120,8 @@ export function TechnicalSpecsTabs({ specs }: Props) {
   return (
     <Tabs
       defaultActiveKey="engine"
+      className="max-w-full"
+      tabBarGutter={16}
       items={[
         {
           key: "engine",

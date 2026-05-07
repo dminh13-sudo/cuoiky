@@ -216,7 +216,7 @@ export function CarManagementTable() {
           <div className="text-xl font-semibold text-lux-text">Quản lý xe</div>
           <div className="text-sm text-lux-muted">Quản lý danh sách xe</div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Button onClick={() => void reload()} disabled={loading}>
             Tải lại
           </Button>
@@ -242,13 +242,17 @@ export function CarManagementTable() {
         </div>
       ) : null}
 
-      <Card className="rounded-2xl border border-lux-line bg-lux-card" styles={{ body: { padding: 0 } }}>
+      <Card
+        className="overflow-hidden rounded-2xl border border-lux-line bg-lux-card"
+        styles={{ body: { padding: 0 } }}
+      >
         <Table<Car>
           rowKey="id"
           columns={columns}
           dataSource={cars}
           loading={loading}
           pagination={{ pageSize: 8 }}
+          scroll={{ x: 720 }}
           locale={{
             emptyText: loading ? "Đang tải..." : "Không có dữ liệu xe.",
           }}
@@ -261,6 +265,7 @@ export function CarManagementTable() {
         title={editing ? "Cập nhật xe" : "Thêm xe mới"}
         okText={editing ? "Lưu" : "Tạo"}
         cancelText="Huỷ"
+        width="min(720px, calc(100vw - 24px))"
         confirmLoading={saving}
         onOk={() => form.submit()}
         className="admin-light-modal"

@@ -40,7 +40,7 @@ export default async function Page() {
       />
 
 
-      <section className="mx-auto w-full max-w-7xl px-4 pb-10">
+      <section className="mx-auto w-full max-w-7xl px-3 pb-10 sm:px-4">
         <FeaturedCars cars={featuredCars} />
 
         <div className="mt-8 flex justify-center">

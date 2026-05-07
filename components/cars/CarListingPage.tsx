@@ -110,7 +110,7 @@ export default function CarListingPage({ initialFilters }: Props) {
 
   return (
     <div className="min-h-screen bg-lux-bg text-lux-text">
-      <div className="mx-auto w-full max-w-7xl px-4 py-6">
+      <div className="mx-auto w-full max-w-7xl px-3 py-5 sm:px-4 sm:py-6">
         <div className="mb-5">
           <Title level={2} className="!mb-1 !text-lux-text">
             Danh sách xe
@@ -154,7 +154,7 @@ export default function CarListingPage({ initialFilters }: Props) {
           </div>
         ) : null}
 
-        <div className="flex flex-col gap-4 lg:flex-row">
+        <div className="flex min-w-0 flex-col gap-4 lg:flex-row">
           <CarFilters
             value={filters}
             brands={derived.brands}
@@ -167,11 +167,11 @@ export default function CarListingPage({ initialFilters }: Props) {
             }}
           />
 
-          <main className="w-full lg:w-3/4">
-            <div className="rounded-xl border border-lux-line bg-lux-card p-4 shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+          <main className="min-w-0 w-full lg:w-3/4">
+            <div className="rounded-xl border border-lux-line bg-lux-card p-3 shadow-[0_10px_24px_rgba(0,0,0,0.3)] sm:p-4">
               <CarGrid cars={pagedCars} loading={loading} />
 
-              <div className="mt-6 flex justify-center">
+              <div className="mt-6 flex justify-center overflow-x-auto pb-1">
                 <Pagination
                   current={safePage}
                   total={total}

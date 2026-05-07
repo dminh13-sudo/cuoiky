@@ -46,12 +46,27 @@ body {
     sans-serif;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
 /* Typography polish */
 h1,
 h2,
 h3 {
   font-family: var(--font-serif);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 /* Ant Design polish (lightweight, safe overrides) */
@@ -112,6 +127,18 @@ h3 {
   background: transparent !important;
   color: var(--foreground) !important;
   border-color: var(--lux-line) !important;
+}
+
+.ant-table-wrapper,
+.ant-card,
+.ant-form,
+.ant-tabs,
+.ant-alert {
+  max-width: 100%;
+}
+
+.ant-table-cell {
+  overflow-wrap: anywhere;
 }
 
 .ant-table-thead > tr > th {
@@ -204,4 +231,14 @@ h3 {
 .admin-light-modal .ant-select-selection-placeholder,
 .admin-light-modal .ant-input-number-input::placeholder {
   color: rgba(0, 0, 0, 0.45) !important;
+}
+
+@media (max-width: 640px) {
+  .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .ant-modal {
+    max-width: calc(100vw - 24px);
+  }
 }
