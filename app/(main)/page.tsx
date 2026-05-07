@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { Car } from "@/components/cars/types";
 import { getCars } from "@/services/carService";
 
-import { BrandStrip } from "@/components/home/BrandStrip";
 import { FeaturedCars } from "@/components/home/FeaturedCars";
 import { HomeHero } from "@/components/home/HomeHero";
 
@@ -40,9 +39,6 @@ export default async function Page() {
         maxPrice={maxPrice}
       />
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-8">
-        <BrandStrip brands={brands} />
-      </section>
 
       <section className="mx-auto w-full max-w-7xl px-4 pb-10">
         <FeaturedCars cars={featuredCars} />
