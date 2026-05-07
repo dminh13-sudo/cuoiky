@@ -75,7 +75,7 @@ export function HomeHero({ brands, categories, minPrice, maxPrice }: Props) {
       <div className="relative mx-auto flex min-h-[82vh] w-full max-w-7xl flex-col justify-end px-4 pb-12 pt-20">
         <div className="max-w-2xl">
           <Title className="!mb-3 !text-white" level={1}>
-            Thuê xe cao cấp, đặt nhanh trong vài phút
+            Showroom xe cao cấp.
           </Title>
           <Text className="text-base !text-white/80">
             Tìm kiếm theo hãng, loại xe và ngân sách. Chọn xe phù hợp và xem chi tiết ngay.
